@@ -1,0 +1,38 @@
+package br.edu.fatecpg.backend_pulseira.repository;
+
+import java.time.Instant;
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
+
+import br.edu.fatecpg.backend_pulseira.model.Alerta;
+import br.edu.fatecpg.backend_pulseira.model.StatusAlerta;
+import br.edu.fatecpg.backend_pulseira.model.TipoAlerta;
+
+public interface AlertaRepository extends FirestoreRepository<Alerta> {
+    List<Alerta> findByPessoaMonitoradaIdAndStatusOrderByGeradoEmDesc(
+            String pessoaMonitoradaId,
+            StatusAlerta status
+    );
+
+    List<Alerta> findByPessoaMonitoradaIdOrderByGeradoEmDesc(String pessoaMonitoradaId);
+
+    Optional<Alerta> findFirstByPessoaMonitoradaIdOrderByGeradoEmDesc(String pessoaMonitoradaId);
+
+    Page<Alerta> findByPessoaMonitoradaId(String pessoaMonitoradaId, Pageable paginacao);
+
+    Page<Alerta> findByPessoaMonitoradaIdAndGeradoEmGreaterThanEqual(
+            String pessoaMonitoradaId,
+            Instant desde,
+            Pageable paginacao
+    );
+
+    boolean existsByPulseiraIdAndTipoAndStatusIn(String pulseiraId, TipoAlerta tipo, List<StatusAlerta> status);
+
+    boolean existsByPulseiraIdAndTipoAndGeradoEmGreaterThanEqual(String pulseiraId, TipoAlerta tipo, Instant desde);
+
+    long countByPessoaMonitoradaIdAndStatus(String pessoaMonitoradaId, StatusAlerta status);
+}

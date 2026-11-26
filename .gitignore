@@ -1,0 +1,9 @@
+/target/
+/.idea/
+local.properties
+firebase-service-account*.json
+service-account*.json
+*.env
+/firmware/pulseira_iot/config.h
+/config/application.properties
+*-firebase-adminsdk-*.json

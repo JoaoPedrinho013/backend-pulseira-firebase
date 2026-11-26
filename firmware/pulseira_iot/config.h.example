@@ -1,0 +1,11 @@
+#pragma once
+
+constexpr char WIFI_SSID[] = "COLOQUE_AQUI";
+constexpr char WIFI_PASSWORD[] = "";
+constexpr char WIFI_SSID_2[] = "";
+constexpr char WIFI_PASSWORD_2[] = "";
+constexpr char WIFI_SSID_3[] = "";
+constexpr char WIFI_PASSWORD_3[] = "";
+constexpr uint16_t DISCOVERY_PORT = 41234;
+constexpr char TELEMETRY_URL[] = "http://IP_DO_SERVIDOR:8080/api/telemetrias";
+constexpr char DEVICE_ID[] = "ESP12E-PULSEIRA-001";
